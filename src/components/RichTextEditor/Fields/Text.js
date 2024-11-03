@@ -1,4 +1,17 @@
-const Text = () => {
+import { useState } from "react";
+
+const Text = ({ setContent }) => {
+  const [text, setText] = useState();
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+    const content = {
+      type: "text",
+      content: e.target.value,
+    };
+    setContent(content);
+  };
+
   return (
     <div className="w-full flex flex-col bg-white">
       <div className="flex p-3 space-x-1 border-2 rounded-t-md border-b-0">
@@ -22,6 +35,8 @@ const Text = () => {
         </button>
       </div>
       <textarea
+        value={text}
+        onChange={handleTextChange}
         placeholder="Enter your text here ..."
         className="w-full p-3 text-gray-500 border-2 outline-none focus:border-gray-400 min-h-20 max-h-24 rounded-b-md"
       ></textarea>

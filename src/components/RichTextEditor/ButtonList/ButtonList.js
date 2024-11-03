@@ -26,7 +26,11 @@ const ButtonList = ({ isVisibile, setField, setImage }) => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setImage(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
     }
   };
 

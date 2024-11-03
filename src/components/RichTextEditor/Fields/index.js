@@ -3,17 +3,17 @@ import Bar from "./Bar";
 import Link from "./Link";
 import Text from "./Text";
 
-export default Fields = ({ field, image }) => {
+export default Fields = ({ field, image, setContent }) => {
   const renderComponent = () => {
     switch (field) {
       case "link":
-        return <Link></Link>;
+        return <Link setContent={setContent}></Link>;
       case "image":
-        return <Image imgSrc={image}></Image>;
+        return <Image setContent={setContent} imgSrc={image}></Image>;
       case "bar":
-        return <Bar></Bar>;
+        return <Bar fieldType={field} setContent={setContent}></Bar>;
       default:
-        return <Text></Text>;
+        return <Text setContent={setContent}></Text>;
     }
   };
   return renderComponent();
