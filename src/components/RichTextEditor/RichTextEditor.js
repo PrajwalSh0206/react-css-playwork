@@ -1,17 +1,20 @@
 import { useState } from "react";
 import ButtonList from "./ButtonList/ButtonList";
+import Fields from "./Fields";
+import list from "./data/list";
 
 const RichTextEditor = () => {
   const [isVisibile, setIsVisibile] = useState(false);
+  const [field, setField] = useState(list?.[0].type || "text");
+  const [image, setImage] = useState(null);
 
   const handleToggle = () => {
     setIsVisibile((prevState) => !prevState);
   };
 
   return (
-    <div className="w-full flex items-start space-x-1">
-      {/* List Shown Here Starts*/}
-      <div className=" flex relative flex-none flex-col items-center p-3 space-y-1">
+    <div className="w-full flex items-center space-x-1">
+      <div className=" flex relative flex-none flex-col items-center space-y-1">
         <button className="bg-white p-2 rounded-full border-gray-200 border-2" onClick={handleToggle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,13 +27,18 @@ const RichTextEditor = () => {
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
         </button>
-        <ButtonList isVisibile={isVisibile}></ButtonList>
+        {/* List Shown Here Starts*/}
+        <div className="relative w-full">
+          <ButtonList setImage={setImage} setField={setField} isVisibile={isVisibile}></ButtonList>
+        </div>
+        {/* List Shown Here Ends*/}
       </div>
-      <textarea
-        placeholder="Enter your text here ..."
-        className="w-full p-3 text-gray-500 border-2 outline-none focus:border-gray-400 min-h-20 max-h-24 rounded-md"
-      ></textarea>
-      {/* List Shown Here Ends*/}
+      <Fields image={image} field={field}></Fields>
+      <button className="text-white bg-gray-700 p-2 rounded-full shadow-md active:scale-90">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+          <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+        </svg>
+      </button>
     </div>
   );
 };
