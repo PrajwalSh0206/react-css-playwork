@@ -1,0 +1,24 @@
+{
+    // Use Prettier as the default formatter
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  
+    // Format files automatically when saving
+    "editor.formatOnSave": true,
+  
+    // Format TypeScript specifically on save
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+  
+    // Optional: Format other languages with Prettier on save
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.formatOnSave": true
+    }
+  }
+  
