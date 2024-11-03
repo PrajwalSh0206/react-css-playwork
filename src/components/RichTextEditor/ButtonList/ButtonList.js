@@ -55,7 +55,7 @@ const ButtonList = ({ isVisibile }) => {
   ];
 
   return (
-    <div className="flex flex-col space-y-1">
+    <div className="flex flex-col h-auto space-y-1">
       {list.map((data) => (
         <button
           className={`bg-white p-2 rounded-full border-gray-200 border-2 transform duration-300 transition-transform ${isVisibile ? "scale-100" : "scale-0"}`}
